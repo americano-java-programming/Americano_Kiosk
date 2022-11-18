@@ -17,7 +17,7 @@ public class StartScreen extends JFrame{
 		//타이틀
 		JLabel name_label = new JLabel("oo CAFE");	
 		name_label.setFont(f1);
-		name_label.setBounds(150,80,300,90);
+		name_label.setBounds(150,150,300,90);
 		
 		//배경사진
 		ImageIcon StartScreen_background = new ImageIcon("images/cafepic.png");

@@ -15,6 +15,9 @@ public class OrderComplete extends JFrame{
 		Font f1 = new Font("¸¼Àº °íµñ", Font.BOLD, 30);
 		Font f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
 		
+		JPanel background_panel = new JPanel();
+		background_panel.setBounds(40,40,505,770);
+		
 		//°áÁ¦¿Ï·á¸àÆ®
 		JLabel paycomplete = new JLabel("°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù", JLabel.CENTER);
 		paycomplete.setFont(f1);
@@ -27,9 +30,10 @@ public class OrderComplete extends JFrame{
 		back.setBackground(Color.LIGHT_GRAY);
 		back.setBounds(175,600,250,100);
 		
+		
 		c.add(paycomplete);
 		c.add(back);	
-		
+		c.add(background_panel);
 		setSize(600,900);
 		setVisible(true);
 	}	

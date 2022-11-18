@@ -52,21 +52,25 @@ public class ManageMode extends JFrame{
 		//우유 재고 관리
 		JPanel milk_panel = new JPanel();
 		//milk_panel.setLayout(new GridLayout(1,1));
-		JLabel milk_str = new JLabel("현재수량:  "+milk_storage+"최대수량:  "+milk_max);	
+		JLabel milk_str = new JLabel("현재수량:  "+milk_storage+"  최대수량:  "+milk_max);	
 		JButton milk_plus = new JButton("+");
-		JButton milk_minus = new JButton("-");
+		JButton milk_minus = new JButton("-");		
 		milk_str.setFont(f2);
 		milk_panel.add(milk_str);
 		milk_panel.add(milk_plus);
 		milk_panel.add(milk_minus);
 		milk_panel.setOpaque(true);
 		milk_panel.setBackground(Color.LIGHT_GRAY);
+		milk_plus.setOpaque(true);
+		milk_plus.setBackground(Color.white);
+		milk_minus.setOpaque(true);
+		milk_minus.setBackground(Color.white);
 		milk_panel.setBounds(150,240,400,100);
 		
 		//녹차가루 재고 관리
 		JPanel greentea_panel = new JPanel();
 		//greentea_panel.setLayout(new GridLayout(1,1));
-		JLabel greentea_str = new JLabel("현재수량:  "+greentea_storage+"최대수량:  "+greentea_max);			
+		JLabel greentea_str = new JLabel("현재수량:  "+greentea_storage+"  최대수량:  "+greentea_max);			
 		JButton greentea_plus = new JButton("+");
 		JButton greentea_minus = new JButton("-");
 		greentea_str.setFont(f2);
@@ -75,41 +79,53 @@ public class ManageMode extends JFrame{
 		greentea_panel.add(greentea_minus);
 		greentea_panel.setOpaque(true);
 		greentea_panel.setBackground(Color.LIGHT_GRAY);
+		greentea_plus.setOpaque(true);
+		greentea_plus.setBackground(Color.white);
+		greentea_minus.setOpaque(true);
+		greentea_minus.setBackground(Color.white);
 		greentea_panel.setBounds(150,350,400,100);
 		
 		//초코가루 재고 관리
 		JPanel chocolate_panel = new JPanel();
 		//chocolate_panel.setLayout(new GridLayout(1,1));
-		JLabel chocolate_str = new JLabel("현재수량:  "+chocolate_storage+"최대수량:  "+chocolate_max);			
+		JLabel chocolate_str = new JLabel("현재수량:  "+chocolate_storage+"  최대수량:  "+chocolate_max);			
 		JButton chocolate_plus = new JButton("+");
-		JButton chocolate_minus = new JButton("-");
+		JButton chocolate_minus = new JButton("-");	
 		chocolate_str.setFont(f2);
 		chocolate_panel.add(chocolate_str);
 		chocolate_panel.add(chocolate_plus);
 		chocolate_panel.add(chocolate_minus);
 		chocolate_panel.setOpaque(true);
 		chocolate_panel.setBackground(Color.LIGHT_GRAY);
+		chocolate_plus.setOpaque(true);
+		chocolate_plus.setBackground(Color.white);
+		chocolate_minus.setOpaque(true);
+		chocolate_minus.setBackground(Color.white);
 		chocolate_panel.setBounds(150,460,400,100);
 		
 		//시럽 재고 관리
 		JPanel syrup_panel = new JPanel();
 		//syrup_panel.setLayout(new GridLayout(1,1));
-		JLabel syrup_str = new JLabel("현재수량:  "+syrup_storage+"최대수량:  "+syrup_max);		
+		JLabel syrup_str = new JLabel("현재수량:  "+syrup_storage+"  최대수량:  "+syrup_max);		
 		JButton syrup_plus = new JButton("+");
-		JButton syrup_minus = new JButton("-");
+		JButton syrup_minus = new JButton("-");	
 		syrup_str.setFont(f2);
 		syrup_panel.add(syrup_str);
 		syrup_panel.add(syrup_plus);
 		syrup_panel.add(syrup_minus);
 		syrup_panel.setOpaque(true);
 		syrup_panel.setBackground(Color.LIGHT_GRAY);
+		syrup_plus.setOpaque(true);
+		syrup_plus.setBackground(Color.white);
+		syrup_minus.setOpaque(true);
+		syrup_minus.setBackground(Color.white);
 		syrup_panel.setBounds(150,570,400,100);
 		
 		//재고관리 창 나가기
 		JButton exit = new JButton("나가기");
 		exit.setFont(f2);
 		exit.setOpaque(true);
-		exit.setBackground(Color.RED);		
+		exit.setBackground(Color.LIGHT_GRAY);		
 		exit.setBounds(450,700,100,40);
 		
 		c.add(storage_panel);
