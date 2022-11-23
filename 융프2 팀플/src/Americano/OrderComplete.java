@@ -36,12 +36,12 @@ public class OrderComplete extends JFrame{
 		back.setOpaque(true);
 		back.setBackground(Color.LIGHT_GRAY);
 		back.setBounds(175,550,250,100);
-		
-		
+			
 		c.add(paycomplete);
 		c.add(back);	
 		c.add(icon_label);
 		c.add(background_panel);
+		
 		setSize(600,800);
 		setVisible(true);
 	}	

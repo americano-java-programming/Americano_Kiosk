@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 class Login extends JFrame{
 	public Login(){
+		
 		setTitle("·Î±×ÀÎ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

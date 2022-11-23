@@ -14,6 +14,7 @@ public class ManageMode extends JFrame{
 	private int syrup_max;
 	
 	public ManageMode() {
+		
 		setTitle("재고관리 페이지");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

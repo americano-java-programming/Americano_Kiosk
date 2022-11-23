@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 public class StartScreen extends JFrame{
 	public StartScreen(){	
+		
 		setTitle("주문시작");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
