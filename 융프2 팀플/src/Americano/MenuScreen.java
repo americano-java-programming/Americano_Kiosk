@@ -106,8 +106,9 @@ public class MenuScreen extends JFrame{
 		pay.setFocusPainted(false);
 		pay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new PayScreen();
 				setVisible(false);
+				new PayScreen();
+				
 			}
 		});
 		
