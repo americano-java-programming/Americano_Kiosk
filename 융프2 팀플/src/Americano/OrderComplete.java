@@ -1,6 +1,7 @@
 package Americano;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class OrderComplete extends JFrame{
@@ -36,6 +37,14 @@ public class OrderComplete extends JFrame{
 		back.setOpaque(true);
 		back.setBackground(Color.LIGHT_GRAY);
 		back.setBounds(175,550,250,100);
+	
+		//back 버튼 누르면 다시 첫 화면으로 돌아가기
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				dispose(); 
+				new StartScreen();
+			}
+		});
 			
 		c.add(paycomplete);
 		c.add(back);	
