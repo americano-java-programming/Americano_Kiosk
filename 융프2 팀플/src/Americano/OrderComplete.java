@@ -5,15 +5,15 @@ import javax.swing.*;
 
 public class OrderComplete extends JFrame{
 	public OrderComplete() {
-		setTitle("ÁÖ¹®¿Ï·á ÆäÀÌÁö");
+		setTitle("ì£¼ë¬¸ì™„ë£Œ í˜ì´ì§€");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container c = getContentPane();
 		c.setLayout(null);
 		c.setBackground(Color.WHITE);
 		
-		Font f1 = new Font("¸¼Àº °íµñ", Font.BOLD, 30);
-		Font f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
+		Font f1 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 30);
+		Font f2 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15);
 		
 		//ImageIcon OrderComplete_background = new ImageIcon("images/OrderCompleteBackground.jpg");
 		//JLabel background_label = new JLabel(OrderComplete_background);		
@@ -25,13 +25,13 @@ public class OrderComplete extends JFrame{
 		JPanel background_panel = new JPanel();
 		background_panel.setBounds(40,40,505,670);
 		
-		//°áÁ¦¿Ï·á¸àÆ®
-		JLabel paycomplete = new JLabel("°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù", JLabel.CENTER);
+		//ê²°ì œì™„ë£Œë©˜íŠ¸
+		JLabel paycomplete = new JLabel("ê²°ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤", JLabel.CENTER);
 		paycomplete.setFont(f1);
 		paycomplete.setBounds(100,200,400,100);
 		
-		//Ã¹È­¸éÀ¸·Î µ¹¾Æ°¡´Â ¹öÆ°
-		JButton back = new JButton("Ã³À½È­¸éÀ¸·Î µ¹¾Æ°¡±â");
+		//ì²«í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ëŠ” ë²„íŠ¼
+		JButton back = new JButton("ì²˜ìŒí™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ê¸°");
 		back.setFont(f2);
 		back.setOpaque(true);
 		back.setBackground(Color.LIGHT_GRAY);

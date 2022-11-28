@@ -11,37 +11,37 @@ import javax.swing.JTextField;
 class Login extends JFrame{
 	public Login(){
 		
-		setTitle("·Î±×ÀÎ");
+		setTitle("ë¡œê·¸ì¸");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container c = getContentPane();
 		c.setLayout(null);
 		
-		Font f1 = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
+		Font f1 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15);
 		
-		//¾ÆÀÌµğ ÀÔ·Â
-		JLabel Id_label = new JLabel("¾ÆÀÌµğ");
+		//ì•„ì´ë”” ì…ë ¥
+		JLabel Id_label = new JLabel("ì•„ì´ë””");
 		JTextField Id_tf = new JTextField("");
 		Id_label.setFont(f1);
 		Id_label.setBounds(20,20,60,30);
 		Id_tf.setBounds(120,20,150,30);
 		
-		//ÆĞ½º¿öµå ÀÔ·Â
-		JLabel password_label = new JLabel("ÆĞ½º¿öµå");
+		//íŒ¨ìŠ¤ì›Œë“œ ì…ë ¥
+		JLabel password_label = new JLabel("íŒ¨ìŠ¤ì›Œë“œ");
 		JTextField password_tf = new JTextField("");
 		password_label.setFont(f1);
 		password_label.setBounds(20,60,60,30);
 		password_tf.setBounds(120,60,150,30);
 		
-		//·Î±×ÀÎ ¹öÆ°
-		JButton login_btn = new JButton("·Î±×ÀÎ");
+		//ë¡œê·¸ì¸ ë²„íŠ¼
+		JButton login_btn = new JButton("ë¡œê·¸ì¸");
 		login_btn.setFont(f1);
 		login_btn.setOpaque(true);
 		login_btn.setBackground(Color.LIGHT_GRAY);
 		login_btn.setBounds(50,110,80,40);
 		
-		//Ãë¼Ò ¹öÆ°
-		JButton exit_btn = new JButton("Ãë¼Ò");
+		//ì·¨ì†Œ ë²„íŠ¼
+		JButton exit_btn = new JButton("ì·¨ì†Œ");
 		exit_btn.setFont(f1);
 		exit_btn.setOpaque(true);
 		exit_btn.setBackground(Color.LIGHT_GRAY);

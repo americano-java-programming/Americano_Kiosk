@@ -7,31 +7,31 @@ import java.awt.event.*;
 public class StartScreen extends JFrame{
 	public StartScreen(){	
 		
-		setTitle("ÁÖ¹®½ÃÀÛ");
+		setTitle("ì£¼ë¬¸ì‹œì‘");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
 		c.setLayout(null);
 		
 		Font f1 = new Font("Calisto MT", Font.BOLD, 60);
-		Font f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 20);
+		Font f2 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 20);
 		
-		//Å¸ÀÌÆ²
+		//íƒ€ì´í‹€
 		JLabel name_label = new JLabel("JAVA CAFE");	
 		name_label.setFont(f1);
 		name_label.setBounds(125,120,350,90);
 		
-		//¹è°æ»çÁø
+		//ë°°ê²½ì‚¬ì§„
 		ImageIcon StartScreen_background = new ImageIcon("images/cafepic.png");
 		JLabel background_label = new JLabel(StartScreen_background);		
 		background_label.setBounds(0,0,590, 800);
 		
-		//ÁÖ¹®¸àÆ®
-		JLabel order_label = new JLabel("ÁÖ¹®ÇÏ½Ã·Á¸é È­¸éÀ» ´­·¯ÁÖ¼¼¿ä CLICK HERE");
+		//ì£¼ë¬¸ë©˜íŠ¸
+		JLabel order_label = new JLabel("ì£¼ë¬¸í•˜ì‹œë ¤ë©´ í™”ë©´ì„ ëˆŒëŸ¬ì£¼ì„¸ìš” CLICK HERE");
 		order_label.setFont(f2);
 		order_label.setForeground(Color.WHITE);
 		order_label.setBounds(80,620,450,60);
 		
-		//°ü¸®ÀÚ¼³Á¤ ¹öÆ°
+		// ê´€ë¦¬ìì„¤ì • ë²„íŠ¼
 		ImageIcon opt = new ImageIcon("images/optionicon.png");
 		JButton option_btn = new JButton(opt);	
 		option_btn.setBorderPainted(false);

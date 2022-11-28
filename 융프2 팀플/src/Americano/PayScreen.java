@@ -68,17 +68,31 @@ public class PayScreen extends JFrame{
 		c.add(paymethod);
 		c.add(cancle);
 		setVisible(true);
-		
-		card.addActionListener(new ActionListener() {
+		cancle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,"카드를 카드인식기에 꽂아주세요.");
+				new StartScreen();
+				new Login();
+				setVisible(false);
+			}
+		});
+		card.addActionListener(new ActionListener() { //결제 수단 선택시 결제완료 화면으로 이동하도록 구현
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null,"카드를 카드인식기에 꽂아주세요.","알림" ,JOptionPane.DEFAULT_OPTION);
+				if(result == 0) {
+					new OrderComplete();
+					setVisible(false);
+				}
 		}
 				
 	});
 		
 		cash.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "현금을 넣어주세요.");
+				int result = JOptionPane.showConfirmDialog(null,"현금을 넣어주세요.","알림" ,JOptionPane.DEFAULT_OPTION);
+				if(result == 0) {
+					new OrderComplete();
+					setVisible(false);
+				}
 			}
 			
 		});
