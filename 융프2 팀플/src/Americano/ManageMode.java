@@ -2,6 +2,7 @@ package Americano;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class ManageMode extends JFrame{
 	private int milk_storage;
@@ -15,32 +16,32 @@ public class ManageMode extends JFrame{
 	
 	public ManageMode() {
 		
-		setTitle("Àç°í°ü¸® ÆäÀÌÁö");
+		setTitle("ìž¬ê³ ê´€ë¦¬ íŽ˜ì´ì§€");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container c = getContentPane();
 		c.setLayout(null);
 		c.setBackground(Color.WHITE);
 		
-		Font f1 = new Font("¸¼Àº °íµñ", Font.BOLD, 20);
-		Font f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
+		Font f1 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 20);
+		Font f2 = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15);
 		
-		//Àç°í°ü¸® Å¸ÀÌÆ²
+		//ìž¬ê³ ê´€ë¦¬ íƒ€ì´í‹€
 		JPanel storage_panel = new JPanel();
 		storage_panel.setLayout(new GridLayout(1,1));
-		JLabel storage = new JLabel("Àç°í°ü¸®",JLabel.CENTER);
+		JLabel storage = new JLabel("ìž¬ê³ ê´€ë¦¬",JLabel.CENTER);
 		storage.setFont(f1);
 		storage_panel.add(storage);
 		storage_panel.setBounds(40,120,510,50);
 		
-		//¸Þ´º ÀÌ¸§
+		//ë©”ë‰´ ì´ë¦„
 		JPanel menu_panel = new JPanel();
 		menu_panel.setLayout(new GridLayout(4,1));	
 		//menu_panel.setBackground(Color.DARGRAY);
-		JLabel milk = new JLabel("¿ìÀ¯",JLabel.CENTER);	
-		JLabel greentea = new JLabel("³ìÂ÷°¡·ç",JLabel.CENTER);
-		JLabel chocolate = new JLabel("ÃÊÄÚ°¡·ç",JLabel.CENTER);
-		JLabel syrup = new JLabel("ÇìÀÌÁñ³Ó ½Ã·´",JLabel.CENTER);
+		JLabel milk = new JLabel("ìš°ìœ ",JLabel.CENTER);	
+		JLabel greentea = new JLabel("ë…¹ì°¨ê°€ë£¨",JLabel.CENTER);
+		JLabel chocolate = new JLabel("ì´ˆì½”ê°€ë£¨",JLabel.CENTER);
+		JLabel syrup = new JLabel("í—¤ì´ì¦ë„› ì‹œëŸ½",JLabel.CENTER);
 		milk.setFont(f2);
 		greentea.setFont(f2);
 		chocolate.setFont(f2);
@@ -51,16 +52,29 @@ public class ManageMode extends JFrame{
 		menu_panel.add(syrup);
 		menu_panel.setBounds(40,190,100,430);
 		
-		//¿ìÀ¯ Àç°í °ü¸®
+		//ìš°ìœ  ìž¬ê³  ê´€ë¦¬
 		JPanel milk_panel = new JPanel();
 		//milk_panel.setLayout(new BorderLayout(0,0));
-		JLabel milk_str = new JLabel("ÇöÀç¼ö·®:  "+milk_storage+"  ÃÖ´ë¼ö·®:  "+milk_max);	
+		JLabel milk_str = new JLabel("í˜„ìž¬ìˆ˜ëŸ‰:  "+milk_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+milk_max);	
 		JButton milk_plus = new JButton("+");
-		JButton milk_minus = new JButton("-");		
+		JButton milk_minus = new JButton("-");	
+		milk_plus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				milk_storage++;
+				milk_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+milk_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+milk_max);
+			}
+		});
+		milk_minus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				if(milk_storage>0)milk_storage--;
+				milk_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+milk_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+milk_max);
+			}
+		});
+		
 		milk_str.setFont(f2);
 		milk_panel.add(milk_str,BorderLayout.CENTER);
 		milk_panel.add(milk_plus);
-		//milk_panel.add(milk_minus);
+		milk_panel.add(milk_minus);
 		milk_panel.setOpaque(true);
 		milk_panel.setBackground(Color.LIGHT_GRAY);
 		milk_plus.setOpaque(true);
@@ -69,12 +83,26 @@ public class ManageMode extends JFrame{
 		milk_minus.setBackground(Color.white);
 		milk_panel.setBounds(150,190,400,100);
 		
-		//³ìÂ÷°¡·ç Àç°í °ü¸®
+		//ë…¹ì°¨ê°€ë£¨ ìž¬ê³  ê´€ë¦¬
 		JPanel greentea_panel = new JPanel();
 		//greentea_panel.setLayout(new GridLayout(1,1));
-		JLabel greentea_str = new JLabel("ÇöÀç¼ö·®:  "+greentea_storage+"  ÃÖ´ë¼ö·®:  "+greentea_max);			
+		JLabel greentea_str = new JLabel("í˜„ìž¬ìˆ˜ëŸ‰:  "+greentea_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+greentea_max);			
 		JButton greentea_plus = new JButton("+");
 		JButton greentea_minus = new JButton("-");
+		greentea_plus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				greentea_storage++;
+				greentea_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+greentea_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+greentea_max);
+			}
+		});
+		greentea_minus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				if(greentea_storage>0)
+				greentea_storage--;
+				greentea_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+greentea_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+greentea_max);
+			}
+		});
+
 		greentea_str.setFont(f2);
 		greentea_panel.add(greentea_str);
 		greentea_panel.add(greentea_plus);
@@ -86,13 +114,28 @@ public class ManageMode extends JFrame{
 		greentea_minus.setOpaque(true);
 		greentea_minus.setBackground(Color.white);
 		greentea_panel.setBounds(150,300,400,100);
+
 		
-		//ÃÊÄÚ°¡·ç Àç°í °ü¸®
+		//ì´ˆì½”ê°€ë£¨ ìž¬ê³  ê´€ë¦¬
 		JPanel chocolate_panel = new JPanel();
 		//chocolate_panel.setLayout(new GridLayout(1,1));
-		JLabel chocolate_str = new JLabel("ÇöÀç¼ö·®:  "+chocolate_storage+"  ÃÖ´ë¼ö·®:  "+chocolate_max);			
+		JLabel chocolate_str = new JLabel("í˜„ìž¬ìˆ˜ëŸ‰:  "+chocolate_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+chocolate_max);			
 		JButton chocolate_plus = new JButton("+");
 		JButton chocolate_minus = new JButton("-");	
+		chocolate_plus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				chocolate_storage++;
+				chocolate_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+chocolate_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+chocolate_max);
+			}
+		});
+		chocolate_minus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				if(chocolate_storage>0)
+					chocolate_storage--;
+				chocolate_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+chocolate_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+chocolate_max);
+			}
+		});
+
 		chocolate_str.setFont(f2);
 		chocolate_panel.add(chocolate_str);
 		chocolate_panel.add(chocolate_plus);
@@ -105,12 +148,26 @@ public class ManageMode extends JFrame{
 		chocolate_minus.setBackground(Color.white);
 		chocolate_panel.setBounds(150,410,400,100);
 		
-		//½Ã·´ Àç°í °ü¸®
+		
+		//ì‹œëŸ½ ìž¬ê³  ê´€ë¦¬
 		JPanel syrup_panel = new JPanel();
 		//syrup_panel.setLayout(new GridLayout(1,1));
-		JLabel syrup_str = new JLabel("ÇöÀç¼ö·®:  "+syrup_storage+"  ÃÖ´ë¼ö·®:  "+syrup_max);		
+		JLabel syrup_str = new JLabel("í˜„ìž¬ìˆ˜ëŸ‰:  "+syrup_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+syrup_max);		
 		JButton syrup_plus = new JButton("+");
 		JButton syrup_minus = new JButton("-");	
+		syrup_plus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				syrup_storage++;
+				syrup_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+syrup_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+syrup_max);
+			}
+		});
+		syrup_minus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				if(syrup_storage>0)
+					syrup_storage--;
+				syrup_str.setText("í˜„ìž¬ìˆ˜ëŸ‰:  "+syrup_storage+"  ìµœëŒ€ìˆ˜ëŸ‰:  "+syrup_max);
+			}
+		});
 		syrup_str.setFont(f2);
 		syrup_panel.add(syrup_str);
 		syrup_panel.add(syrup_plus);
@@ -123,8 +180,8 @@ public class ManageMode extends JFrame{
 		syrup_minus.setBackground(Color.white);
 		syrup_panel.setBounds(150,520,400,100);
 		
-		//Àç°í°ü¸® Ã¢ ³ª°¡±â
-		JButton exit = new JButton("³ª°¡±â");
+		//ìž¬ê³ ê´€ë¦¬ ì°½ ë‚˜ê°€ê¸°
+		JButton exit = new JButton("ë‚˜ê°€ê¸°");
 		exit.setFont(f2);
 		exit.setOpaque(true);
 		exit.setBackground(Color.LIGHT_GRAY);		
