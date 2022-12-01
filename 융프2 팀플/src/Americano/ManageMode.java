@@ -5,14 +5,49 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ManageMode extends JFrame{
-	private int milk_storage;
-	private int greentea_storage;
-	private int chocolate_storage;
-	private int syrup_storage;
-	private int milk_max;
-	private int greentea_max;
-	private int chocolate_max;
-	private int syrup_max;
+
+	private static int milk_storage;
+	private static int greentea_storage;
+	private static int chocolate_storage;
+	private static int syrup_storage;
+	private int milk_max=100;
+	private int greentea_max=50;
+	private int chocolate_max=50;
+	private int syrup_max=50;
+	public static void setinit(int milk, int greentea, int chocolate, int syrup) {
+		milk_storage = milk; greentea_storage=greentea; chocolate_storage=chocolate; syrup_storage=syrup;
+	}
+	public static void setMilkStorage(){
+		milk_storage--;
+	}
+	public static int getMilkStorage(){
+		return milk_storage;
+	}
+
+	public static void setGreenteaStorage(){
+		greentea_storage--;
+	}
+	public static int getGreenteaStorage(){
+		return greentea_storage;
+	}
+
+	public static void setChocolateStorage(){
+		chocolate_storage--;
+	}
+	public static int getChocolateStorage(){
+		return chocolate_storage;
+	}
+
+	public static void setSyrupStorage(){
+		syrup_storage--;
+	}
+	public static int getSyrupStorage(){
+		return syrup_storage;
+	}
+	public String [] milkAdded= {"카푸치노","카페 라떼","헤이즐넛 라떼","카페모카","녹차 라떼"};
+	public	String [] syrupAdded ={"헤이즐넛 라떼"};
+	public	String [] greenteaAdded ={"녹차 라떼","그린티"};
+	public	String [] chocolateAdded ={"초코 라떼","카페모카"};
 	
 	public ManageMode() {
 		
@@ -33,7 +68,6 @@ public class ManageMode extends JFrame{
 		storage.setFont(f1);
 		storage_panel.add(storage);
 		storage_panel.setBounds(40,120,510,50);
-		
 		//메뉴 이름
 		JPanel menu_panel = new JPanel();
 		menu_panel.setLayout(new GridLayout(4,1));	
@@ -51,8 +85,7 @@ public class ManageMode extends JFrame{
 		menu_panel.add(chocolate);
 		menu_panel.add(syrup);
 		menu_panel.setBounds(40,190,100,430);
-		
-		//우유 재고 관리
+		//우유 재고 관리 
 		JPanel milk_panel = new JPanel();
 		//milk_panel.setLayout(new BorderLayout(0,0));
 		JLabel milk_str = new JLabel("현재수량:  "+milk_storage+"  최대수량:  "+milk_max);	
@@ -60,7 +93,8 @@ public class ManageMode extends JFrame{
 		JButton milk_minus = new JButton("-");	
 		milk_plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				milk_storage++;
+				if(milk_storage<milk_max)
+					milk_storage++;
 				milk_str.setText("현재수량:  "+milk_storage+"  최대수량:  "+milk_max);
 			}
 		});
@@ -83,7 +117,7 @@ public class ManageMode extends JFrame{
 		milk_minus.setBackground(Color.white);
 		milk_panel.setBounds(150,190,400,100);
 		
-		//녹차가루 재고 관리
+		//�끃李④�猷� �옱怨� 愿�由�
 		JPanel greentea_panel = new JPanel();
 		//greentea_panel.setLayout(new GridLayout(1,1));
 		JLabel greentea_str = new JLabel("현재수량:  "+greentea_storage+"  최대수량:  "+greentea_max);			
@@ -91,14 +125,15 @@ public class ManageMode extends JFrame{
 		JButton greentea_minus = new JButton("-");
 		greentea_plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				greentea_storage++;
+				if(greentea_storage<greentea_max)
+					greentea_storage++;
 				greentea_str.setText("현재수량:  "+greentea_storage+"  최대수량:  "+greentea_max);
 			}
 		});
 		greentea_minus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				if(greentea_storage>0)
-				greentea_storage--;
+					greentea_storage--;
 				greentea_str.setText("현재수량:  "+greentea_storage+"  최대수량:  "+greentea_max);
 			}
 		});
@@ -116,7 +151,7 @@ public class ManageMode extends JFrame{
 		greentea_panel.setBounds(150,300,400,100);
 
 		
-		//초코가루 재고 관리
+		//초코가루 재고관리
 		JPanel chocolate_panel = new JPanel();
 		//chocolate_panel.setLayout(new GridLayout(1,1));
 		JLabel chocolate_str = new JLabel("현재수량:  "+chocolate_storage+"  최대수량:  "+chocolate_max);			
@@ -124,7 +159,8 @@ public class ManageMode extends JFrame{
 		JButton chocolate_minus = new JButton("-");	
 		chocolate_plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				chocolate_storage++;
+				if(chocolate_storage<chocolate_max)
+					chocolate_storage++;
 				chocolate_str.setText("현재수량:  "+chocolate_storage+"  최대수량:  "+chocolate_max);
 			}
 		});
@@ -149,7 +185,7 @@ public class ManageMode extends JFrame{
 		chocolate_panel.setBounds(150,410,400,100);
 		
 		
-		//시럽 재고 관리
+		//시럽재고관리
 		JPanel syrup_panel = new JPanel();
 		//syrup_panel.setLayout(new GridLayout(1,1));
 		JLabel syrup_str = new JLabel("현재수량:  "+syrup_storage+"  최대수량:  "+syrup_max);		
@@ -157,7 +193,8 @@ public class ManageMode extends JFrame{
 		JButton syrup_minus = new JButton("-");	
 		syrup_plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				syrup_storage++;
+				if(syrup_storage<syrup_max)
+					syrup_storage++;
 				syrup_str.setText("현재수량:  "+syrup_storage+"  최대수량:  "+syrup_max);
 			}
 		});
@@ -187,6 +224,13 @@ public class ManageMode extends JFrame{
 		exit.setBackground(Color.LIGHT_GRAY);		
 		exit.setBounds(450,650,100,40);
 		
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				dispose(); 
+				new StartScreen();
+			}
+		});
+		
 		c.add(storage_panel);
 		c.add(menu_panel);	
 		c.add(milk_panel);
@@ -198,8 +242,10 @@ public class ManageMode extends JFrame{
 		setSize(600,800);
 		setVisible(true);
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new ManageMode();
+		
 	}
 }
