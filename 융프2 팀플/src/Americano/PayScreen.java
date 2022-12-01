@@ -70,8 +70,9 @@ public class PayScreen extends JFrame{
 		setVisible(true);
 		cancle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new StartScreen();
-				new Login();
+//				new StartScreen();
+//				new Login();
+				new MenuScreen();
 				setVisible(false);
 			}
 		});

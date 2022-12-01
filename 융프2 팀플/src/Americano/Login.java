@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.*;
 
@@ -26,56 +27,65 @@ class Login extends JFrame{
 		Id_label.setFont(f1);
 		Id_label.setBounds(20,20,60,30);
 		Id_tf.setBounds(120,20,150,30);
-		
+				
 		//패스워드 입력
 		JLabel password_label = new JLabel("패스워드");
 		JTextField password_tf = new JTextField("");
 		password_label.setFont(f1);
 		password_label.setBounds(20,60,60,30);
 		password_tf.setBounds(120,60,150,30);
-		
+				
 		//로그인 버튼
 		JButton login_btn = new JButton("로그인");
 		login_btn.setFont(f1);
 		login_btn.setOpaque(true);
 		login_btn.setBackground(Color.LIGHT_GRAY);
 		login_btn.setBounds(50,110,80,40);
+				
 		
 		//로그인 버튼 클릭 시 아이디와 비밀번호 맞으면 manage mode 들어가기
-		login_btn.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				String password = password_tf.getText(); //사용자가 입력한 비밀번호 받아옴
-				String id = Id_tf.getText(); //사용자가 입력한 아이디 받아옴
-				if(password.equals("1234")&&id.equals("americano")){
-					new ManageMode(); //매니지 모드로 들어감
-					dispose(); //현재 로그인 창 없애기
-				}
-			}
-		});
+				login_btn.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						String password = password_tf.getText(); //사용자가 입력한 비밀번호 받아옴
+						String id = Id_tf.getText(); //사용자가 입력한 아이디 받아옴
+						if(password.trim().length()==0||id.trim().length()==0){//아이디/비밀번호 중 하나라도 입력이 안 되었을 시
+							int result = JOptionPane.showConfirmDialog(null,"아이디/비밀번호를 입력해주세요","알림" ,JOptionPane.DEFAULT_OPTION);
+						}else{
+							if(password.equals("1234")&&id.equals("americano")){//모두 맞을 때
+								new ManageMode(); //매니지 모드로 들어감
+								dispose(); //현재 로그인 창 없애기
+							}else{//틀렸을 때
+								int result = JOptionPane.showConfirmDialog(null,"틀린 아이디 또는 비밀번호 입니다.","알림" ,JOptionPane.DEFAULT_OPTION);
+							}
+						}
+						
+					}
+				});
 
-		//취소 버튼
-		JButton exit_btn = new JButton("취소");
-		exit_btn.setFont(f1);
-		exit_btn.setOpaque(true);
-		exit_btn.setBackground(Color.LIGHT_GRAY);
-		exit_btn.setBounds(150,110,80,40);
 
-		//취소 버튼 클릭 시 로그인 창 나감
-		exit_btn.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				dispose();
-			}
-		});
-			
-		c.add(Id_label);
-		c.add(Id_tf);
-		c.add(password_label);
-		c.add(password_tf);
-		c.add(login_btn);
-		c.add(exit_btn);
-		
-		setSize(300,200);
-		setVisible(true);
+				//취소 버튼
+				JButton exit_btn = new JButton("취소");
+				exit_btn.setFont(f1);
+				exit_btn.setOpaque(true);
+				exit_btn.setBackground(Color.LIGHT_GRAY);
+				exit_btn.setBounds(150,110,80,40);
+
+				//취소 버튼 클릭 시 로그인 창 나감
+				exit_btn.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						dispose();
+					}
+				});
+					
+				c.add(Id_label);
+				c.add(Id_tf);
+				c.add(password_label);
+				c.add(password_tf);
+				c.add(login_btn);
+				c.add(exit_btn);
+				
+				setSize(300,200);
+				setVisible(true);
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 카푸치노는 없음) 
@@ -19,12 +21,19 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 	public String menuname;
 	public ImageIcon menuimage;
 	public int price;
+	private boolean option;
+	private boolean init = false; 
 	
+	public String [] milkAdded= {"카푸치노","카페 라떼","헤이즐넛 라떼","카페모카","녹차 라떼"};
+	public	String [] syrupAdded ={"헤이즐넛 라떼"};
+	public	String [] greenteaAdded ={"녹차 라떼","그린티"};
+	public	String [] chocolateAdded ={"초코 라떼","카페모카"};
 	
 	
 	public MenuDialog(JFrame frame, String menuname, ImageIcon menuimage, int price, boolean coffee) {
 		
 		super(frame, "title", true);
+		this.menuname =menuname;
 		this.orderprice = price;
 		this.setLayout(null);
 		this.setSize(400,600);
@@ -36,14 +45,32 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		cancle.setBounds(5,500,195,70);
 		cancle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				init = true;
 				setVisible(false);
 			}
 		});
 		JButton hold = new JButton("메뉴 담기");
 		hold.setBounds(200,500,195,70);
+
 		hold.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(orderprice);
+					if(Arrays.asList(milkAdded).contains(menuname)){
+						ManageMode.setMilkStorage();
+						System.out.println("우유 줄어듬");
+				}
+					if(Arrays.asList(syrupAdded).contains(menuname)){
+						ManageMode.setSyrupStorage();
+						System.out.println("시럽 줄어듬");
+				}
+					if(Arrays.asList(greenteaAdded).contains(menuname)){
+						ManageMode.setGreenteaStorage();
+						System.out.println("녹차 줄어듬");
+				}
+					if(Arrays.asList(chocolateAdded).contains(menuname)){
+						ManageMode.setChocolateStorage();
+						System.out.println("초코 줄어듬");
+				}
 				
 				setVisible(false);
 			}
@@ -67,6 +94,15 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 	}
 	public String getmenuname() {
 		return menuname;
+	}
+	public boolean getoption() {
+		return option;
+	}
+	public int getcount() {
+		return count;
+	}
+	public boolean getcancle() {
+		return init;
 	}
 	public void common(String menuname, ImageIcon menuimage, int price) { //공통 
 		JLabel image = new JLabel(menuimage);
@@ -99,16 +135,44 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		ice.setBounds(180, 250, 130, 30);
 		temp.add(hot);
 		temp.add(ice);
+		hot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				option = true;
+			}
+		});
+		ice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				option = false;
+			}
+		});
 		
 		JButton plus = new JButton("+");
 		JButton minus = new JButton("-");
 		plus.setBounds(265, 77, 26, 26);
 		plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Boolean isPlus = true;
+				if(Arrays.asList(milkAdded).contains(menuname)){
+					if(count >= ManageMode.getMilkStorage()) isPlus = false;
+					
+				}
+				if(Arrays.asList(greenteaAdded).contains(menuname)){
+					if(count >= ManageMode.getGreenteaStorage()) isPlus = false;
+				}
+				if(Arrays.asList(syrupAdded).contains(menuname)){
+					if(count >= ManageMode.getSyrupStorage()) isPlus = false;
+				}
+				if(Arrays.asList(chocolateAdded).contains(menuname)){
+					if(count >= ManageMode.getChocolateStorage()) isPlus = false;
+				}
+				if(isPlus){
 				count = 1+(Integer.parseInt(quantity.getText())); // 수량 한 개 증가
 				quantity.setText(Integer.toString(count));
 				pricelabel.setText(Integer.toString(count*price));
 				orderprice = count*price;
+			}else{
+				int result = JOptionPane.showConfirmDialog(null,"재고가 부족합니다.","알림" ,JOptionPane.DEFAULT_OPTION);
+			}
 			}
 		});
 		minus.setBounds(199,77,26,26);
@@ -189,4 +253,3 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 	}
 	
 }
-
