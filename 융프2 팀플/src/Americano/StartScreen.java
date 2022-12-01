@@ -87,5 +87,10 @@ public class StartScreen extends JFrame{
 	}
 	public static void main(String [] args) {
 		new StartScreen();
+		ManageMode init = new ManageMode();
+		init.setVisible(false);
+		init.setinit(100,50,50,50);
+
 	}
 }
+
