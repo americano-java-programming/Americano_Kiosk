@@ -1,12 +1,15 @@
 //메뉴화면 
 
 package Americano;
-
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.Console;
+
 import javax.swing.table.DefaultTableModel;
+import java.util.*;
 
 public class MenuScreen extends JFrame{
 	private JButton[] menubtn=new JButton[9];
@@ -18,8 +21,15 @@ public class MenuScreen extends JFrame{
 	public JLabel price;
 	public int sum=0;
 	public JPanel basket;
+		//재고 별 메뉴들
+	public String [] milkAdded= {"카푸치노","카페 라떼","헤이즐넛 라떼","카페모카","녹차 라떼"};
+	public	String [] syrupAdded ={"헤이즐넛 라떼"};
+	public	String [] greenteaAdded ={"녹차 라떼","그린티"};
+	public	String [] chocolateAdded ={"초코 라떼","카페모카"};
 	
+	ArrayList<String> orderedNames = new ArrayList<>();
 	MenuDialog dialog; //다이얼로그의 레퍼런스
+	
 	public MenuScreen() {
 		setTitle("JAVA CAFE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +59,7 @@ public class MenuScreen extends JFrame{
 		bottom.setBackground(Color.white);
 		
 		
-		String[] tableHeaderTitles = {"품명", "가격"};
+		String[] tableHeaderTitles = {"품명","옵션", "수량", "가격"};
 		DefaultTableModel model = new DefaultTableModel(tableHeaderTitles, 0);
 		JTable table = new JTable(model);
 		table.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -92,7 +102,7 @@ public class MenuScreen extends JFrame{
 			menubtn[i].setHorizontalTextPosition(JButton.CENTER);
 			menubtn[i].setOpaque(true);
 			menubtn[i].setBackground(Color.white);
-			menubtn[i].addActionListener(new MenuActionListener(price, model, this));
+			menubtn[i].addActionListener(new MenuActionListener(price, model, this,milkAdded, greenteaAdded,syrupAdded,chocolateAdded));
 			menupanel.add(menubtn[i]);
 		}
 		menupanel.setBounds(10, 60, 580, 600);
@@ -104,10 +114,16 @@ public class MenuScreen extends JFrame{
 		pay.setBackground(Color.LIGHT_GRAY);
 		pay.setFont(new Font("맑은 고딕",Font.BOLD ,18));
 		pay.setFocusPainted(false);
+
+		//재고 줄여주기
 		pay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new PayScreen();
+		public void actionPerformed(ActionEvent e) {
+			if(!((price.getText().toString()).equals("0 won"))) {
+			setVisible(false);
+			new PayScreen();}
+			else {
+				JOptionPane.showConfirmDialog(null,"메뉴를 골라주세요.","알림" ,JOptionPane.DEFAULT_OPTION);
+			}
 				
 			}
 		});
@@ -119,7 +135,6 @@ public class MenuScreen extends JFrame{
 		setVisible(true);
 		
 		
-		
 	}
 	class MenuActionListener implements ActionListener{
 		
@@ -127,7 +142,7 @@ public class MenuScreen extends JFrame{
 		private JPanel basket;
 		private JFrame c;
 		private DefaultTableModel model;
-		MenuActionListener(JLabel price, DefaultTableModel model, JFrame c){
+		MenuActionListener(JLabel price, DefaultTableModel model, JFrame c,String[] milkAdded, String[] greenteaAdded,String[] syrupAdded,String[] chocolateAdded){
 			this.price = price;
 //			this.basket = basket;
 			this.model = model;
@@ -138,28 +153,75 @@ public class MenuScreen extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			String cmd = e.getActionCommand();
 //			JButton b = (JButton)e.getSource();
-			String inputstr[] = new String[2]; //테이블에 들어갈 배열선언
+			String inputstr[] = new String[4]; //테이블에 들어갈 배열선언
+			Boolean isOpen = true;
+			for(int i=0;i<milkAdded.length;i++){
+				if(cmd.contains(milkAdded[i])){
+					if(ManageMode.getMilkStorage()==0){
+						int result = JOptionPane.showConfirmDialog(null,"재고가 없습니다.","알림" ,JOptionPane.DEFAULT_OPTION);
+						isOpen = false;
+						break;
 
-			
+					}
+				}
+			}
+			for(int i=0;i<greenteaAdded.length;i++){
+				if(isOpen&&cmd.contains(greenteaAdded[i])){
+					System.out.println(ManageMode.getGreenteaStorage());
+					if(ManageMode.getGreenteaStorage()==0){
+						int result = JOptionPane.showConfirmDialog(null,"재고가 없습니다.","알림" ,JOptionPane.DEFAULT_OPTION);
+						isOpen = false;
+						break;
+					}
+				}
+			}
+			for(int i=0;i<syrupAdded.length;i++){
+				if(isOpen&&cmd.contains(syrupAdded[i])){
+					if(ManageMode.getSyrupStorage()==0){
+						int result = JOptionPane.showConfirmDialog(null,"재고가 없습니다.","알림" ,JOptionPane.DEFAULT_OPTION);
+						isOpen = false;
+						break;
+					}
+				}
+			}
+			for(int i=0;i<chocolateAdded.length;i++){
+				if(isOpen&&cmd.contains(chocolateAdded[i])){
+					System.out.println(ManageMode.getChocolateStorage());
+					if(ManageMode.getChocolateStorage()==0){
+						int result = JOptionPane.showConfirmDialog(null,"재고가 없습니다.","알림" ,JOptionPane.DEFAULT_OPTION);
+						isOpen = false;
+						break;
+					}
+				}
+			}
+			if(isOpen){
 			if(cmd.contains("아메리카노") || cmd.contains("카페 라떼") || cmd.contains("헤이즐넛 라떼") || cmd.contains("모카 라떼")) {
+				
 				int index = Integer.parseInt(cmd.replaceAll("[^\\d]", ""))/10000; // 인덱스 추출
 				dialog = new MenuDialog(c , menuname[index], menuimage[index], menuprice[index], true);
 				dialog.setVisible(true);
-
-				sum+=dialog.getorder();
-				price.setText(sum+" won");
-				inputstr[0] = menuname[index];
-				inputstr[1] = Integer.toString(dialog.getorder());
-				model.addRow(inputstr);
-
+				if (dialog.getcancle()==false) {
+					sum+=dialog.getorder();
+					price.setText(sum+" won");
+					inputstr[0] = menuname[index];
+					inputstr[1] = (dialog.getoption()) ? "핫" : "아이스";
+					orderedNames.add(menuname[index]);	
+					inputstr[2] = Integer.toString(dialog.getcount());
+					inputstr[3] = Integer.toString(dialog.getorder());
+					model.addRow(inputstr);
+				}
 				
 			}
 			else if(cmd.contains("에스프레소") || cmd.contains("카푸치노")) {
+				if(cmd.contains("카푸치노")){ManageMode.setMilkStorage();
+					System.out.println("우유 줄어듬");}
 				int index = Integer.parseInt(cmd.replaceAll("[^\\d]", ""))/10000; // 인덱스 추출
 				sum+=menuprice[index];
 				price.setText(sum+"won");
 				inputstr[0] = menuname[index];
-				inputstr[1] = Integer.toString(menuprice[index]);
+				orderedNames.add(menuname[index]);	
+				inputstr[2] = "1";
+				inputstr[3] = Integer.toString(menuprice[index]);
 				model.addRow(inputstr);
 		
 			}
@@ -167,15 +229,17 @@ public class MenuScreen extends JFrame{
 				int index = Integer.parseInt(cmd.replaceAll("[^\\d]", ""))/10000; //인덱스 추출
 				dialog = new MenuDialog(c, menuname[index], menuimage[index], menuprice[index], false);
 				dialog.setVisible(true);
-				
-				sum+=dialog.getorder();
-				price.setText(sum+" won");
-				inputstr[0] = menuname[index];
-				inputstr[1] = Integer.toString(dialog.getorder());
-				model.addRow(inputstr);
-			}
-			
-			
+				if(dialog.getcancle()==false) {
+					sum+=dialog.getorder();
+					price.setText(sum+" won");
+					inputstr[0] = menuname[index];
+					orderedNames.add(menuname[index]);	
+					inputstr[1] = (dialog.getoption()) ? "핫" : "아이스";
+					inputstr[2] = Integer.toString(dialog.getcount());
+					inputstr[3] = Integer.toString(dialog.getorder());
+					model.addRow(inputstr);
+				}
+			}}
 		}
 	}
 	
@@ -186,11 +250,3 @@ public class MenuScreen extends JFrame{
 	}
 
 }
-
-
-	
-	
-		
-		
-	
-	
