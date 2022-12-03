@@ -55,7 +55,7 @@ public class MenuScreen extends JFrame{
 		JPanel bottom = new JPanel();
 		BoxLayout box1 = new BoxLayout(bottom,BoxLayout.X_AXIS);
 		bottom.setLayout(box1);
-		bottom.setBounds(10,660,490,120);
+		bottom.setBounds(10,650,490,120);
 		bottom.setBackground(Color.white);
 		
 		
@@ -64,7 +64,7 @@ public class MenuScreen extends JFrame{
 		JTable table = new JTable(model);
 		table.getColumnModel().getColumn(0).setPreferredWidth(200);
 		JPanel tablePanel = new JPanel();
-		tablePanel.setBounds(10,660,350,110);
+		tablePanel.setBounds(10,665,350,90);
 		c.add(tablePanel);
 		tablePanel.setLayout(new BorderLayout(0, 0));
 		
@@ -105,10 +105,10 @@ public class MenuScreen extends JFrame{
 			menubtn[i].addActionListener(new MenuActionListener(price, model, this,milkAdded, greenteaAdded,syrupAdded,chocolateAdded));
 			menupanel.add(menubtn[i]);
 		}
-		menupanel.setBounds(10, 60, 580, 600);
+		menupanel.setBounds(6, 60, 570, 600);
 		
 		//결제버튼 
-		JButton pay = new JButton("결제하기");
+		JButton pay = new JButton("결제");
 		pay.setBounds(505,660,85,110);
 		pay.setOpaque(true);
 		pay.setBackground(Color.LIGHT_GRAY);
