@@ -152,8 +152,8 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		JButton plus_btn = new JButton(plus);
 		JButton minus_btn = new JButton(minus);
 		plus_btn.setBackground(Color.white);
-		plus.setBounds(265, 77, 26, 26);
-		plus.addActionListener(new ActionListener() {
+		plus_btn.setBounds(265, 77, 26, 26);
+		plus_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Boolean isPlus = true;
 				if(Arrays.asList(milkAdded).contains(menuname)){
@@ -180,8 +180,8 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 			}
 		});
 		minus_btn.setBackground(Color.white);
-		minus.setBounds(199,77,26,26);
-		minus.addActionListener(new ActionListener() {
+		minus_btn.setBounds(199,77,26,26);
+		minus_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (Integer.parseInt(quantity.getText())!=1) {
 					count = (Integer.parseInt(quantity.getText()))-1; // 수량 한 개 감소
@@ -214,8 +214,8 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		this.add(image);
 		this.add(name);
 		this.add(quantity);
-		this.add(minus);
-		this.add(plus);
+		this.add(minus_btn);
+		this.add(plus_btn);
 		this.add(pricefix);
 		this.add(pricelabel);
 		this.add(templabel);
@@ -256,4 +256,5 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		this.add(original);
 		this.add(strong);
 	}	
+	
 }
