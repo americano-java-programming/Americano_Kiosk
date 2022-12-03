@@ -56,24 +56,23 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 
 		hold.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(orderprice);
-					if(Arrays.asList(milkAdded).contains(menuname)){
-						ManageMode.setMilkStorage();
-						System.out.println("우유 줄어듬");
-				}
-					if(Arrays.asList(syrupAdded).contains(menuname)){
-						ManageMode.setSyrupStorage();
-						System.out.println("시럽 줄어듬");
-				}
-					if(Arrays.asList(greenteaAdded).contains(menuname)){
-						ManageMode.setGreenteaStorage();
-						System.out.println("녹차 줄어듬");
-				}
-					if(Arrays.asList(chocolateAdded).contains(menuname)){
-						ManageMode.setChocolateStorage();
-						System.out.println("초코 줄어듬");
-				}
-				
+				for(int i=0;i<count;i++){	
+				if(Arrays.asList(milkAdded).contains(menuname)){
+					ManageMode.setMilkStorage();
+					System.out.println("우유 줄어듬");
+			}
+				if(Arrays.asList(syrupAdded).contains(menuname)){
+					ManageMode.setSyrupStorage();
+					System.out.println("시럽 줄어듬");
+			}
+				if(Arrays.asList(greenteaAdded).contains(menuname)){
+					ManageMode.setGreenteaStorage();
+					System.out.println("녹차 줄어듬");
+			}
+				if(Arrays.asList(chocolateAdded).contains(menuname)){
+					ManageMode.setChocolateStorage();
+					System.out.println("초코 줄어듬");
+			}}
 				setVisible(false);
 			}
 		});
