@@ -255,6 +255,5 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		this.add(light);
 		this.add(original);
 		this.add(strong);
-	}
-	
+	}	
 }
