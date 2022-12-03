@@ -42,7 +42,8 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		
 		//취소버튼, 담기버튼 
 		JButton cancle = new JButton("취소");
-		cancle.setBounds(5,500,195,70);
+		cancle.setBackground(Color.WHITE);
+		cancle.setBounds(0,500,195,70);
 		cancle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				init = true;
@@ -50,7 +51,8 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 			}
 		});
 		JButton hold = new JButton("메뉴 담기");
-		hold.setBounds(200,500,195,70);
+		hold.setBackground(Color.WHITE);
+		hold.setBounds(195,500,195,70);
 
 		hold.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,7 +114,7 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 		JLabel name = new JLabel(menuname);
 		name.setFont(new Font("맑은 고딕",Font.BOLD,25));
 		name.setHorizontalTextPosition(JLabel.CENTER);
-		name.setBounds(185, 5, 150, 50);
+		name.setBounds(185, 5, 170, 50);
 		
 		JLabel quantity = new JLabel("1");
 		quantity.setOpaque(true);
@@ -145,9 +147,11 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 				option = false;
 			}
 		});
-		
-		JButton plus = new JButton("+");
-		JButton minus = new JButton("-");
+		ImageIcon plus = new ImageIcon("images/plus.png");
+		ImageIcon minus = new ImageIcon("images/minus.png");
+		JButton plus_btn = new JButton(plus);
+		JButton minus_btn = new JButton(minus);
+		plus_btn.setBackground(Color.white);
 		plus.setBounds(265, 77, 26, 26);
 		plus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -175,6 +179,7 @@ class MenuDialog extends JDialog{ //옵션 선택 팝업창(에스프레소와 �
 			}
 			}
 		});
+		minus_btn.setBackground(Color.white);
 		minus.setBounds(199,77,26,26);
 		minus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
